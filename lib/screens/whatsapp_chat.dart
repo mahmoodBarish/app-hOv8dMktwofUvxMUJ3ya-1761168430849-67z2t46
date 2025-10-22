@@ -136,7 +136,7 @@ class WhatsappChat extends StatelessWidget {
             children: [
               Text(
                 'Martha Craig',
-                style: GoogleFonts.sfProText(
+                style: GoogleFonts.inter( // <--- تم التعديل
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
@@ -144,7 +144,7 @@ class WhatsappChat extends StatelessWidget {
               ),
               Text(
                 'tap here for contact info',
-                style: GoogleFonts.sfProText(
+                style: GoogleFonts.inter( // <--- تم التعديل
                   fontSize: 12,
                   color: Colors.grey[600],
                 ),
@@ -179,7 +179,7 @@ class WhatsappChat extends StatelessWidget {
         ),
         child: Text(
           date,
-          style: GoogleFonts.sfProText(
+          style: GoogleFonts.inter( // <--- تم التعديل
             fontSize: 12,
             fontWeight: FontWeight.w600,
             color: const Color(0xFF3C3C43),
@@ -221,14 +221,14 @@ class WhatsappChat extends StatelessWidget {
           children: [
             Text(
               text,
-              style: GoogleFonts.sfProText(fontSize: 16, color: Colors.black),
+              style: GoogleFonts.inter(fontSize: 16, color: Colors.black), // <--- تم التعديل
             ),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   time,
-                  style: GoogleFonts.sfProText(
+                  style: GoogleFonts.inter( // <--- تم التعديل
                     fontSize: 11,
                     color: Colors.black.withOpacity(0.4),
                   ),
@@ -291,7 +291,7 @@ class WhatsappChat extends StatelessWidget {
                   Flexible(
                     child: Text(
                       fileName,
-                      style: GoogleFonts.sfProText(
+                      style: GoogleFonts.inter( // <--- تم التعديل
                         fontSize: 16,
                         color: Colors.black.withOpacity(0.7),
                       ),
@@ -307,7 +307,7 @@ class WhatsappChat extends StatelessWidget {
               children: [
                 Text(
                   fileInfo,
-                  style: GoogleFonts.sfProText(
+                  style: GoogleFonts.inter( // <--- تم التعديل
                     fontSize: 11,
                     color: Colors.black.withOpacity(0.4),
                   ),
@@ -315,7 +315,7 @@ class WhatsappChat extends StatelessWidget {
                 const SizedBox(width: 8),
                 Text(
                   time,
-                  style: GoogleFonts.sfProText(
+                  style: GoogleFonts.inter( // <--- تم التعديل
                     fontSize: 11,
                     color: Colors.black.withOpacity(0.4),
                   ),
@@ -363,7 +363,7 @@ class WhatsappChat extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: 'Message',
-                        hintStyle: GoogleFonts.sfProText(color: Colors.grey[500]),
+                        hintStyle: GoogleFonts.inter(color: Colors.grey[500]), // <--- تم التعديل
                         border: InputBorder.none,
                         contentPadding:
                             const EdgeInsets.symmetric(horizontal: 16),
