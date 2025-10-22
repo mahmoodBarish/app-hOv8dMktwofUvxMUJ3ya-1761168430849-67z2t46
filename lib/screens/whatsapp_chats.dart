@@ -1,341 +1,391 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class WhatsappChats extends StatelessWidget {
-  const WhatsappChats({super.key});
+class WhatsappChat extends StatelessWidget {
+  const WhatsappChat({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> chatsData = [
-      {
-        'avatar': 'assets/images/1_95.png',
-        'name': 'Martin Randolph',
-        'message': 'Yes, 2pm is awesome',
-        'time': '11/19/19',
-        'isRead': true,
-        'messageType': 'text',
-      },
-      {
-        'avatar': 'assets/images/1_34.png',
-        'name': 'Andrew Parker',
-        'message': 'What kind of strategy is better?',
-        'time': '11/16/19',
-        'isRead': true,
-        'messageType': 'text',
-      },
-      {
-        'avatar': 'assets/images/1_107.png',
-        'name': 'Karen Castillo',
-        'message': '0:14',
-        'time': '11/15/19',
-        'isRead': false,
-        'messageType': 'voice',
-      },
-      {
-        'avatar': 'assets/images/1_22.png',
-        'name': 'Maximillian Jacobson',
-        'message': 'Bro, I have a good idea!',
-        'time': '10/30/19',
-        'isRead': true,
-        'messageType': 'text',
-      },
-      {
-        'avatar': 'assets/images/1_80.png',
-        'name': 'Martha Craig',
-        'message': 'Photo',
-        'time': '10/28/19',
-        'isRead': false,
-        'messageType': 'photo',
-      },
-      {
-        'avatar': 'assets/images/1_58.png',
-        'name': 'Tabitha Potter',
-        'message':
-            'Actually I wanted to check with you about your online business plan on our…',
-        'time': '8/25/19',
-        'isRead': false,
-        'messageType': 'text',
-      },
-      {
-        'avatar': 'assets/images/1_66.png',
-        'name': 'Maisy Humphrey',
-        'message':
-            'Welcome, to make design process faster, look at Pixsellz',
-        'time': '8/20/19',
-        'isRead': true,
-        'messageType': 'text',
-      },
-      {
-        'avatar': 'assets/images/1_46.png',
-        'name': 'Kieron Dotson',
-        'message': 'Ok, have a good trip!',
-        'time': '7/29/19',
-        'isRead': true,
-        'messageType': 'text',
-      },
-      {
-        'avatar': 'assets/images/1_119.png',
-        'name': 'Joshua Lawrence',
-        'message': 'Do you like WhatsApp UI?',
-        'time': '10/20/19',
-        'isRead': true,
-        'messageType': 'text',
-      },
-    ];
-
     return Scaffold(
       backgroundColor: Colors.white,
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            backgroundColor: const Color(0xFFF6F6F6),
-            pinned: true,
-            floating: true,
-            elevation: 0.5,
-            title: Text(
-              'Chats',
-              style: GoogleFonts.sourceSansPro(
-                fontWeight: FontWeight.w600,
-                fontSize: 17,
-                color: Colors.black,
+      appBar: _buildAppBar(context),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/1_464.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                reverse: true,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
+                children: [
+                  _buildFileMessageBubble(
+                    isSender: true,
+                    fileName: 'IMG_0484',
+                    fileInfo: '2.6 MB png',
+                    time: '11:51',
+                    isRead: true,
+                  ),
+                  _buildFileMessageBubble(
+                    isSender: true,
+                    fileName: 'IMG_0483',
+                    fileInfo: '2.8 MB png',
+                    time: '11:51',
+                    isRead: true,
+                  ),
+                  _buildMessageBubble(
+                    text: 'I think top two are:',
+                    time: '11:50',
+                    isSender: true,
+                    isRead: true,
+                  ),
+                  _buildMessageBubble(
+                    text: 'Do you like it?',
+                    time: '11:45',
+                    isSender: false,
+                  ),
+                  _buildMessageBubble(
+                    text: 'What is the most popular meal in Japan?',
+                    time: '11:45',
+                    isSender: false,
+                  ),
+                  _buildMessageBubble(
+                    text: 'It’s morning in Tokyo 😎',
+                    time: '11:43',
+                    isSender: true,
+                    isRead: true,
+                  ),
+                  _buildMessageBubble(
+                    text: 'Do you know what time is it?',
+                    time: '11:40',
+                    isSender: false,
+                  ),
+                  _buildFileMessageBubble(
+                    isSender: true,
+                    fileName: 'IMG_0481',
+                    fileInfo: '2.8 MB png',
+                    time: '10:15',
+                    isRead: true,
+                  ),
+                  _buildFileMessageBubble(
+                    isSender: true,
+                    fileName: 'IMG_0475',
+                    fileInfo: '2.4 MB png',
+                    time: '10:15',
+                    isRead: true,
+                  ),
+                  _buildMessageBubble(
+                    text: 'Japan looks amazing!',
+                    time: '10:10',
+                    isSender: true,
+                    isRead: true,
+                  ),
+                  _buildMessageBubble(
+                    text: 'Good morning!',
+                    time: '10:10',
+                    isSender: true,
+                    isRead: true,
+                  ),
+                  _buildDateChip('Fri, Jul 26'),
+                  _buildMessageBubble(
+                    text: 'Good bye!',
+                    time: '17:47',
+                    isSender: true,
+                    isRead: true,
+                  ),
+                  _buildMessageBubble(
+                    text: 'I will write from Japan',
+                    time: '17:47',
+                    isSender: true,
+                    isRead: true,
+                  ),
+                ].reversed.toList(),
               ),
             ),
-            centerTitle: true,
-            leading: Center(
-              child: TextButton(
-                onPressed: () {},
-                child: Text(
-                  'Edit',
-                  style: GoogleFonts.sourceSansPro(
-                    color: const Color(0xFF007AFF),
-                    fontSize: 17,
-                    fontWeight: FontWeight.w400,
-                  ),
+            _buildMessageInputBar(context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
+    return AppBar(
+      backgroundColor: const Color(0xFFF6F6F6),
+      elevation: 1,
+      leading: IconButton(
+        icon: const Icon(Icons.arrow_back_ios_new, color: Color(0xFF007AFF)),
+        onPressed: () => context.go('/whatsapp_chats'),
+      ),
+      titleSpacing: 0,
+      title: Row(
+        children: [
+          const CircleAvatar(
+            radius: 20,
+            backgroundImage: AssetImage('assets/images/1_656.png'),
+          ),
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Martha Craig',
+                style: GoogleFonts.inter( // <--- تم التعديل
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black,
                 ),
               ),
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.create_outlined,
-                    color: Color(0xFF007AFF)),
-                onPressed: () {},
+              Text(
+                'tap here for contact info',
+                style: GoogleFonts.inter( // <--- تم التعديل
+                  fontSize: 12,
+                  color: Colors.grey[600],
+                ),
               ),
             ],
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Broadcast Lists',
-                      style: GoogleFonts.sourceSansPro(
-                        color: const Color(0xFF007AFF),
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+        ],
+      ),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.videocam_outlined,
+              color: Color(0xFF007AFF), size: 28),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: const Icon(Icons.call_outlined,
+              color: Color(0xFF007AFF), size: 24),
+          onPressed: () {},
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDateChip(String date) {
+    return Center(
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        decoration: BoxDecoration(
+          color: const Color(0xFFDDE0EA),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Text(
+          date,
+          style: GoogleFonts.inter( // <--- تم التعديل
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: const Color(0xFF3C3C43),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMessageBubble({
+    required String text,
+    required String time,
+    required bool isSender,
+    bool isRead = false,
+  }) {
+    final color = isSender ? const Color(0xFFDCF8C6) : const Color(0xFFFCFCFC);
+
+    return Align(
+      alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 250),
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 2,
+              offset: const Offset(0, 1),
+            )
+          ],
+        ),
+        child: Wrap(
+          alignment: WrapAlignment.end,
+          crossAxisAlignment: WrapCrossAlignment.end,
+          spacing: 8,
+          children: [
+            Text(
+              text,
+              style: GoogleFonts.inter(fontSize: 16, color: Colors.black), // <--- تم التعديل
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  time,
+                  style: GoogleFonts.inter( // <--- تم التعديل
+                    fontSize: 11,
+                    color: Colors.black.withOpacity(0.4),
                   ),
-                  TextButton(
-                    onPressed: () {},
+                ),
+                if (isSender) ...[
+                  const SizedBox(width: 4),
+                  Icon(
+                    Icons.done_all,
+                    size: 16,
+                    color: isRead ? const Color(0xFF007AFF) : Colors.grey,
+                  ),
+                ],
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildFileMessageBubble({
+    required bool isSender,
+    required String fileName,
+    required String fileInfo,
+    required String time,
+    required bool isRead,
+  }) {
+    return Align(
+      alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        constraints: const BoxConstraints(maxWidth: 250),
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        padding: const EdgeInsets.all(8),
+        decoration: BoxDecoration(
+          color: isSender ? const Color(0xFFDCF8C6) : Colors.white,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 2,
+              offset: const Offset(0, 1),
+            )
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.05),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.insert_drive_file,
+                      color: Color(0xFF007AFF), size: 28),
+                  const SizedBox(width: 8),
+                  Flexible(
                     child: Text(
-                      'New Group',
-                      style: GoogleFonts.sourceSansPro(
-                        color: const Color(0xFF007AFF),
-                        fontSize: 17,
-                        fontWeight: FontWeight.w400,
+                      fileName,
+                      style: GoogleFonts.inter( // <--- تم التعديل
+                        fontSize: 16,
+                        color: Colors.black.withOpacity(0.7),
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                final chat = chatsData[index];
-                return _ChatItem(
-                  avatar: chat['avatar']!,
-                  name: chat['name']!,
-                  message: chat['message']!,
-                  time: chat['time']!,
-                  isRead: chat['isRead'],
-                  messageType: chat['messageType'],
-                  onTap: () => context.go('/whatsapp_chat'),
-                  isLastItem: index == chatsData.length - 1,
-                );
-              },
-              childCount: chatsData.length,
+            const SizedBox(height: 4),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  fileInfo,
+                  style: GoogleFonts.inter( // <--- تم التعديل
+                    fontSize: 11,
+                    color: Colors.black.withOpacity(0.4),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  time,
+                  style: GoogleFonts.inter( // <--- تم التعديل
+                    fontSize: 11,
+                    color: Colors.black.withOpacity(0.4),
+                  ),
+                ),
+                if (isSender) ...[
+                  const SizedBox(width: 4),
+                  Icon(
+                    Icons.done_all,
+                    size: 16,
+                    color: isRead ? const Color(0xFF007AFF) : Colors.grey,
+                  ),
+                ],
+              ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFFF6F6F6),
-        currentIndex: 3,
-        onTap: (index) {},
-        selectedItemColor: const Color(0xFF007AFF),
-        unselectedItemColor: const Color(0xFF545458).withOpacity(0.65),
-        selectedLabelStyle: GoogleFonts.sourceSansPro(
-            fontSize: 10, fontWeight: FontWeight.w500),
-        unselectedLabelStyle: GoogleFonts.sourceSansPro(
-            fontSize: 10, fontWeight: FontWeight.w500),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.data_usage_outlined),
-            label: 'Status',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.call_outlined),
-            label: 'Calls',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt_outlined),
-            label: 'Camera',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble),
-            label: 'Chats',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings_outlined),
-            label: 'Settings',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _ChatItem extends StatelessWidget {
-  final String avatar;
-  final String name;
-  final String message;
-  final String time;
-  final bool isRead;
-  final String messageType;
-  final VoidCallback onTap;
-  final bool isLastItem;
-
-  const _ChatItem({
-    required this.avatar,
-    required this.name,
-    required this.message,
-    required this.time,
-    required this.isRead,
-    required this.messageType,
-    required this.onTap,
-    this.isLastItem = false,
-  });
-
-  Widget _buildMessagePreview() {
-    List<Widget> children = [];
-    if (isRead && messageType == 'text') {
-      children.add(
-          const Icon(Icons.done_all, color: Color(0xFF3498DB), size: 16));
-      children.add(const SizedBox(width: 4));
-    }
-    if (messageType == 'photo') {
-      children.add(const Icon(Icons.photo_camera_outlined,
-          color: Color(0xFF8E8E93), size: 16));
-      children.add(const SizedBox(width: 4));
-    }
-    if (messageType == 'voice') {
-      children
-          .add(const Icon(Icons.mic, color: Color(0xFF60BC58), size: 16));
-      children.add(const SizedBox(width: 4));
-    }
-
-    children.add(
-      Expanded(
-        child: Text(
-          message,
-          style: GoogleFonts.sourceSansPro(
-            color: const Color(0xFF8E8E93),
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-          ),
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
+          ],
         ),
       ),
     );
-
-    return Row(children: children);
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      child: Column(
+  Widget _buildMessageInputBar(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: 16,
+        right: 16,
+        top: 8,
+        bottom: 8 + MediaQuery.of(context).padding.bottom,
+      ),
+      color: const Color(0xFFF6F6F6),
+      child: Row(
         children: [
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 26,
-                  backgroundImage: AssetImage(avatar),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              name,
-                              style: GoogleFonts.sourceSansPro(
-                                color: Colors.black,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            time,
-                            style: GoogleFonts.sourceSansPro(
-                              color: const Color(0xFF8E8E93),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          const SizedBox(width: 6),
-                          const Icon(Icons.arrow_forward_ios,
-                              size: 14, color: Color(0x4D3C3C43)),
-                        ],
+          IconButton(
+              icon: const Icon(Icons.add_circle,
+                  color: Color(0xFF007AFF), size: 28),
+              onPressed: () {}),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: Colors.grey.shade300, width: 0.5)),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Message',
+                        hintStyle: GoogleFonts.inter(color: Colors.grey[500]), // <--- تم التعديل
+                        border: InputBorder.none,
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 16),
                       ),
-                      const SizedBox(height: 4),
-                      _buildMessagePreview(),
-                    ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
-          if (!isLastItem)
-            Padding(
-              padding: const EdgeInsets.only(left: 86.0, right: 16.0),
-              child: Divider(
-                height: 1,
-                thickness: 0.5,
-                color: Colors.grey.withOpacity(0.3),
+                  IconButton(
+                    icon: Icon(Icons.mood, color: Colors.grey[500]),
+                    onPressed: () {},
+                  ),
+                ],
               ),
             ),
+          ),
+          IconButton(
+              icon: const Icon(Icons.camera_alt_outlined,
+                  color: Color(0xFF007AFF), size: 28),
+              onPressed: () {}),
+          IconButton(
+              icon: const Icon(Icons.mic_none,
+                  color: Color(0xFF007AFF), size: 28),
+              onPressed: () {}),
         ],
       ),
     );
